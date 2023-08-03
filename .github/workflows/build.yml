@@ -9,11 +9,9 @@ on:
 jobs:
   vars: 
     runs-on: ubuntu-latest
-    outputs:
-      timestamp: ${{ steps.tmstmp.outputs.date }}
     steps:
-      - id: tmstmp
-        run: echo "::set-output name=date::lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)"
+      - name: Generate docker tag name
+        run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> DOCKER_OUTPUT
         
   build:
     needs: vars
@@ -21,4 +19,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo ${{ needs.vars.outputs.timestamp }}
+        run: echo ${{ output.tmstmp }}
