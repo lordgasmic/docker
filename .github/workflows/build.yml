@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate docker tag name
-        run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> DOCKER_OUTPUT
+        run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> GITHUB_OUTPUT
         
   build:
     needs: vars
