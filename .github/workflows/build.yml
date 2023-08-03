@@ -11,8 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Docker tag name
-        id: output1
-        run: echo "tmstmp=lordgasmic" >> "GITHUB_ENV"
-      - uses: actions/checkout@v2
+        id: step_one
+        run: |
+          echo "action_state=party" >> "GITHUB_ENV"
+      #- uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo "${{ env.tmstmp }}"
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}"
