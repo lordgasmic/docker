@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate docker tag name
-        run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> GITHUB_OUTPUT
+        run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> GITHUB_ENV
         
   build:
     needs: vars
@@ -19,4 +19,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo ${{ output.tmstmp }}
+        run: echo ${{ env.tmstmp }}
