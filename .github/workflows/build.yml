@@ -21,4 +21,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo ${{ steps.outputs.timestamp.tmstmp }}
+        run: echo ${{ steps.timestamp.outputs.tmstmp }}
