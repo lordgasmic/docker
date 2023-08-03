@@ -10,12 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Docker tag name
-        id: step_one
-        run: |
-          echo "action_state=party" >> "GITHUB_ENV"
-      #- uses: actions/checkout@v2
-      - name: echo timestamp
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}"
+    - name: Set the value
+      id: step_one
+      run: |
+        echo "action_state=yellow" >> "$GITHUB_ENV"
+    - name: Use the value
+      id: step_two
+      run: |
+        echo "${{ env.action_state }}" # This will output 'yellow'
+
+
