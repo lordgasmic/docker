@@ -15,4 +15,4 @@ jobs:
         run: echo "tmstmp=lordgasmic" >> "GITHUB_ENV"
       - uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo ${{ env.tmstmp }}
+        run: echo "${{ env.tmstmp }}"
