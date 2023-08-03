@@ -13,7 +13,7 @@ jobs:
       timestamp: ${{ steps.tmstmp.outputs.date }}
     steps:
       - id: tmstmp
-        run: echo "::set-output name=date::lordgasmic/docker:$(date +%Y%m%d%H%M)"
+        run: echo "::set-output name=date::lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)"
         
   build:
     needs: vars
