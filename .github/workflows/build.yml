@@ -7,18 +7,12 @@ on:
     branches: [master]
 
 jobs:
-  vars: 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate docker tag name
-        id: timestamp
-        run: echo "tmstmp=lordgasmic/docker" >> "GITHUB_OUTPUT"
-        #run: echo "tmstmp=lordgasmic/docker:$(TZ=":America/Detroit" date +%Y%m%d%H%M)" >> "GITHUB_OUTPUT"
-        
   build:
-    needs: vars
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Docker tag name
+        id: output1
+        run: echo "tmstmp=lordgasmic" >> "GITHUB_ENV"
       - uses: actions/checkout@v2
       - name: echo timestamp
-        run: echo ${{ vars.steps.timestamp.outputs.tmstmp }}
+        run: echo ${{ env.tmstmp }}
